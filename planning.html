@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Règles de confidentialité — GTA - Planning</title><link rel="stylesheet" href="style.css"></head><body><main>
+<nav><a href="index.html">Accueil</a><a href="planning.html">GTA - Planning</a><a href="evaluation.html">GTA - Évaluation</a></nav>
+
+<h1>Règles de confidentialité</h1>
+<p class="meta">GTA - Planning · version 1.2.1 · Firefox et Chrome (Manifest V3)</p>
+<p>« GTA - Planning » ajoute, sur la page Planning de GTA, des blocs personnalisés (type, horaires, commentaire, tags) par technicien, enregistrés dans une liste SharePoint de l'entreprise.</p>
+<p>Cette extension est un outil professionnel destiné aux collaborateurs de l'entreprise : elle ne fonctionne qu'avec le site GTA et le SharePoint de l'entreprise, et n'a aucun usage pour le grand public.</p>
+
+<h2>Ce que l'extension lit</h2>
+<p>Uniquement sur la page Planning de GTA (<code>gta.ftth.iliad.fr</code> et <code>gta.priv.app.ftth.iliad.fr</code>) :</p>
+<ul><li>la grille du planning : jours, créneaux, identifiant et nom affiché des techniciens, événements existants (pour proposer une plage libre).</li></ul>
+<p>Elle ne lit pas le reste de GTA, ni d'autres sites, ni votre historique de navigation.</p>
+
+<h2>Ce que l'extension enregistre</h2>
+<ul><li>pour chaque bloc créé, modifié ou supprimé : identifiant du bloc, identifiant et nom du technicien, jour, horaires, type de bloc, <strong>commentaire libre</strong> (1 000 caractères au plus, faits professionnels uniquement), indicateur de suppression, date de saisie, version de l'extension ;</li><li>le <strong>nom et l'adresse e-mail</strong> de la personne connectée à SharePoint qui effectue la saisie.</li></ul>
+<p>Ces données sont écrites <strong>uniquement</strong> dans la liste SharePoint Online de l'entreprise (<code>iliadfrance.sharepoint.com</code>), avec votre session Microsoft 365 déjà ouverte. L'extension ne lit, ne copie et ne stocke ni mot de passe, ni cookie, ni jeton de connexion.</p>
+
+<h2>Qui peut voir ces données</h2>
+<p>Toute personne ayant accès à la liste SharePoint peut les consulter, par l'extension comme directement dans SharePoint. Les droits d'accès se gèrent dans SharePoint, pas dans l'extension.</p>
+
+<h2>Stockage sur votre poste</h2>
+<ul>
+<li><strong>Réglages</strong> : adresses des listes configurées, option d'envoi automatique.</li>
+<li><strong>Saisies non envoyées</strong> (si SharePoint est injoignable) : conservées dans le stockage local de l'extension et supprimées automatiquement au bout de <strong>48 heures</strong> si elles n'ont pas pu être envoyées. Elles ne sont envoyées que vers la liste d'origine.</li>
+<li><strong>Mémoire de session</strong> : des copies des dernières données lues, l'état de la connexion et un journal technique sont gardés <strong>en mémoire vive</strong> du navigateur (jamais écrits sur le disque) et disparaissent à la fermeture du navigateur.</li>
+<li>Une copie des dernières périodes lues (technicien, jour, horaires, type, commentaire, auteur) reste en mémoire vive pour afficher les blocs quand SharePoint est injoignable.</li>
+</ul>
+
+<h2>Ce que l'extension ne fait pas</h2>
+<ul>
+<li>Aucun envoi vers un serveur de l'auteur ou un service tiers ; aucune télémétrie, aucune publicité, aucun suivi.</li>
+<li>Aucune vente ni cession de données, aucun usage sans rapport avec la fonction décrite.</li>
+<li>Aucun code chargé depuis Internet (pas d'<code>eval</code>, pas de bibliothèque distante).</li>
+</ul>
+
+<h2>Autorisations demandées</h2>
+<table><tr><th>Autorisation</th><th>Pourquoi</th></tr>
+<tr><td><code>storage</code></td><td>Conserver vos réglages (adresse de la liste SharePoint) et les saisies pas encore envoyées.</td></tr>
+<tr><td><code>alarms</code></td><td>Réveiller l'extension chaque minute tant qu'une saisie attend, pour la renvoyer dès que SharePoint est joignable.</td></tr>
+<tr><td>Accès à <code>iliadfrance.sharepoint.com</code></td><td>Lire et écrire la liste SharePoint de l'entreprise avec votre session déjà ouverte.</td></tr>
+<tr><td>Chrome : <code>declarativeNetRequestWithHostAccess</code><br>Firefox : <code>webRequest</code> et <code>webRequestBlocking</code></td><td>SharePoint refuse les écritures dont l'en-tête <code>Origin</code> est celui de l'extension. Une règle remplace cet en-tête par l'adresse de SharePoint, uniquement pour les requêtes REST émises par l'extension elle-même vers ce SharePoint. Aucun autre en-tête n'est lu ni modifié.</td></tr>
+<tr><td>Scripts sur les pages GTA</td><td>Afficher l'interface de l'extension dans la page Planning de GTA.</td></tr></table>
+
+<h2>Conservation, accès et suppression</h2>
+<p>Les données enregistrées dans la liste SharePoint relèvent de l'organisation qui exploite cette liste (responsable de traitement), qui définit leur durée de conservation. L'extension n'efface rien dans la liste : une modification ou une suppression ajoute une ligne, et les anciennes lignes restent consultables tant qu'elles ne sont pas supprimées dans SharePoint. Pour exercer vos droits d'accès, de rectification ou d'effacement, ou pour toute question, écrivez à <a href="mailto:mstephan@iliad-free.fr">mstephan@iliad-free.fr</a>.</p>
+
+<h2>Modifications</h2>
+<p>Cette page est mise à jour lorsque le fonctionnement de l'extension change ; la date de dernière mise à jour figure en bas de page.</p>
+<footer>Contact : <a href="mailto:mstephan@iliad-free.fr">mstephan@iliad-free.fr</a><br>Dernière mise à jour : 23 octobre 2026.</footer></main></body></html>

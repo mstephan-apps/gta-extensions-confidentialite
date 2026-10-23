@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Règles de confidentialité — GTA - Évaluation des interventions</title><link rel="stylesheet" href="style.css"></head><body><main>
+<nav><a href="index.html">Accueil</a><a href="planning.html">GTA - Planning</a><a href="evaluation.html">GTA - Évaluation</a></nav>
+
+<h1>Règles de confidentialité</h1>
+<p class="meta">GTA - Évaluation des interventions · version 1.2.0 · Firefox et Chrome (Manifest V3)</p>
+<p>« GTA - Évaluation des interventions » ajoute, sur les fiches intervention de GTA, un panneau pour évaluer une intervention et les techniciens (statut, tags, points bloquants, commentaire), enregistré dans une liste SharePoint de l'entreprise, avec l'historique de chaque intervention.</p>
+<p>Cette extension est un outil professionnel destiné aux collaborateurs de l'entreprise : elle ne fonctionne qu'avec le site GTA et le SharePoint de l'entreprise, et n'a aucun usage pour le grand public.</p>
+
+<h2>Ce que l'extension lit</h2>
+<p>Uniquement sur les fiches intervention de GTA (<code>gta.ftth.iliad.fr</code> et <code>gta.priv.app.ftth.iliad.fr</code>) :</p>
+<ul><li>sur la fiche : identifiant d'intervention, numéro client, « jeton », date de rendez-vous et noms des techniciens de l'intervention (valeurs bornées en longueur avant tout envoi).</li></ul>
+<p>Elle ne lit pas le reste de GTA, ni d'autres sites, ni votre historique de navigation.</p>
+
+<h2>Ce que l'extension enregistre</h2>
+<ul><li>vos saisies : statut, tags, points bloquants, <strong>commentaires libres</strong> (1 000 caractères au plus, faits professionnels uniquement, sans donnée de santé ni appréciation sur la vie privée) ;</li><li>une ligne par technicien évalué, avec le <strong>nom du technicien</strong>, l'identifiant d'intervention, le <strong>numéro client</strong> et le « jeton » de la fiche (qui concernent des clients, tiers à l'entreprise), la date de rendez-vous, la date de saisie et la version de l'extension ;</li><li>le <strong>nom et l'adresse e-mail</strong> de la personne connectée à SharePoint qui effectue la saisie (l'historique affiché dans GTA n'indique que le nom) ;</li><li>si une évaluation est rendue obsolète : la mention et l'auteur de l'action.</li></ul>
+<p>Ces données sont écrites <strong>uniquement</strong> dans la liste SharePoint Online de l'entreprise (<code>iliadfrance.sharepoint.com</code>), avec votre session Microsoft 365 déjà ouverte. L'extension ne lit, ne copie et ne stocke ni mot de passe, ni cookie, ni jeton de connexion.</p>
+
+<h2>Qui peut voir ces données</h2>
+<p>Toute personne ayant accès à la liste SharePoint peut les consulter, par l'extension comme directement dans SharePoint. Les droits d'accès se gèrent dans SharePoint, pas dans l'extension.</p>
+
+<h2>Stockage sur votre poste</h2>
+<ul>
+<li><strong>Réglages</strong> : adresses des listes configurées, option d'envoi automatique.</li>
+<li><strong>Saisies non envoyées</strong> (si SharePoint est injoignable) : conservées dans le stockage local de l'extension et supprimées automatiquement au bout de <strong>48 heures</strong> si elles n'ont pas pu être envoyées. Elles ne sont envoyées que vers la liste d'origine.</li>
+<li><strong>Mémoire de session</strong> : des copies des dernières données lues, l'état de la connexion et un journal technique sont gardés <strong>en mémoire vive</strong> du navigateur (jamais écrits sur le disque) et disparaissent à la fermeture du navigateur.</li>
+<li>Une copie du dernier historique lu reste en mémoire vive pour l'affichage hors ligne ; le dernier référentiel (tags, points bloquants) est supprimé à chaque démarrage du navigateur.</li>
+</ul>
+
+<h2>Ce que l'extension ne fait pas</h2>
+<ul>
+<li>Aucun envoi vers un serveur de l'auteur ou un service tiers ; aucune télémétrie, aucune publicité, aucun suivi.</li>
+<li>Aucune vente ni cession de données, aucun usage sans rapport avec la fonction décrite.</li>
+<li>Aucun code chargé depuis Internet (pas d'<code>eval</code>, pas de bibliothèque distante).</li>
+</ul>
+
+<h2>Autorisations demandées</h2>
+<table><tr><th>Autorisation</th><th>Pourquoi</th></tr>
+<tr><td><code>storage</code></td><td>Conserver vos réglages (adresse de la liste SharePoint) et les saisies pas encore envoyées.</td></tr>
+<tr><td><code>alarms</code></td><td>Réveiller l'extension chaque minute tant qu'une saisie attend, pour la renvoyer dès que SharePoint est joignable.</td></tr>
+<tr><td>Accès à <code>iliadfrance.sharepoint.com</code></td><td>Lire et écrire la liste SharePoint de l'entreprise avec votre session déjà ouverte.</td></tr>
+<tr><td>Chrome : <code>declarativeNetRequestWithHostAccess</code><br>Firefox : <code>webRequest</code> et <code>webRequestBlocking</code></td><td>SharePoint refuse les écritures dont l'en-tête <code>Origin</code> est celui de l'extension. Une règle remplace cet en-tête par l'adresse de SharePoint, uniquement pour les requêtes REST émises par l'extension elle-même vers ce SharePoint. Aucun autre en-tête n'est lu ni modifié.</td></tr>
+<tr><td>Scripts sur les pages GTA</td><td>Afficher l'interface de l'extension dans les fiches intervention de GTA.</td></tr></table>
+
+<h2>Conservation, accès et suppression</h2>
+<p>Les données enregistrées dans la liste SharePoint relèvent de l'organisation qui exploite cette liste (responsable de traitement), qui définit leur durée de conservation. Une évaluation rendue obsolète reste dans la liste (marquée comme telle) et n'est plus affichée dans GTA. Pour exercer vos droits d'accès, de rectification ou d'effacement, ou pour toute question, écrivez à <a href="mailto:mstephan@iliad-free.fr">mstephan@iliad-free.fr</a>.</p>
+
+<h2>Modifications</h2>
+<p>Cette page est mise à jour lorsque le fonctionnement de l'extension change ; la date de dernière mise à jour figure en bas de page.</p>
+<footer>Contact : <a href="mailto:mstephan@iliad-free.fr">mstephan@iliad-free.fr</a><br>Dernière mise à jour : 23 octobre 2026.</footer></main></body></html>
